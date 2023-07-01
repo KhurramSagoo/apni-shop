@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" > -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Apni Shop</title>
     <link rel="stylesheet" href="./style/index.css" />
     
@@ -19,13 +21,21 @@
 
     <!-- Header with Product Images -->
     <header>
-      <div class="product-images">
-        <img src="./images/macbook.jfif" />
-        <img src="./images/mac.jfif" />
-        <img src="./images/sam1.jfif" />
-        <img src="./images/sam2.jfif" />
-        <img src="./images/iphone1.jfif" />
-        <img src="./images/iphone2.jfif" />
+      <div class="slider-container" id="product-images">
+        <img src="./images/laptop1.jpg" class="slide"/>
+        <img src="./images/laptop2.jpg" class="slide"/>
+        <img src="./images/sam1.jpg" class="slide"/>
+        <img src="./images/sam2.jpg" class="slide"/>
+        <img src="./images/sam3.jpg" class="slide"/>
+        <img src="./images/apple1.jpg" class="slide"/>
+        <img src="./images/apple2.jpg" class="slide"/>
+        <img src="./images/frag1.jpg" class="slide"/>
+        <img src="./images/frag2.jpg" class="slide"/>
+        <img src="./images/frag3.jpg" class="slide"/>
+        <img src="./images/mobile1.jpg" class="slide"/>
+        <img src="./images/mobile2.jpg" class="slide"/>
+        <img src="./images/cos1.jpg" class="slide"/>
+        <img src="./images/cos2.jpg" class="slide"/>
       </div>
     </header>
 
@@ -33,7 +43,7 @@
     <div class="container">
       <!-- Sidebar -->
       <aside>
-        <h2>Categories</h2>
+        <h1>Categories</h1>
         <ul>
           <li><a href="#">Smartphones</a></li>
           <li><a href="#">Laptop</a></li>
@@ -114,7 +124,7 @@
         </div>
         <div class="product-details">
           <h1>Iphone 14</h1>
-          <img class="main-image" src="./images//smartphone.jfif" alt="" />
+          <img class="main-image" src="./images/smartphone.jpg" alt="" />
           <p>Here</p>
           <p>Price: $19.99</p>
           <button id="add-to-cart">Add to Cart</button>
@@ -146,6 +156,27 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script>
+      // JavaScript code
+const slides = document.querySelectorAll('.slide');
+let currentIndex = 0;
+
+function slideToNext() {
+  // Calculate the next slide index
+  const nextIndex = (currentIndex + 1) % slides.length;
+
+  // Move the current slide to the left
+  slides[currentIndex].style.left = '-100%';
+
+  // Move the next slide into view from the right
+  slides[nextIndex].style.left = '0';
+
+  // Update the current index
+  currentIndex = nextIndex;
+}
+
+// Call slideToNext() periodically to create a slideshow effect
+setInterval(slideToNext, 3000); // Adjust the duration between slides as needed
+
       // JavaScript code for the shopping cart functionality
       const cartItemsElement = document.getElementById("cart-items");
       const cartTotalElement = document.getElementById("cart-total-value");

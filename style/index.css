@@ -6,6 +6,27 @@
   padding: 0;
 }
 
+.slider-container {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width:100%;
+  height: 450px;
+   /* Adjust the height as needed */
+}
+
+.slide {
+  /* padding-left: 180px; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  height: 100%;
+  transition: left 1s ease; /* Adjust the transition duration as needed */
+}
+
 /* Body styles */
 body {
   font-family: 'Poppins', sans-serif;
@@ -22,8 +43,8 @@ nav {
   background-color: #333;
 }
 .main-image{
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
 }
 nav ul {
   list-style: none;
@@ -48,9 +69,9 @@ header {
   background-color: #fff;
 }
 
-.product-images img {
-  width: 200px;
-  height: 200px;
+#product-images img {
+  max-width: auto;
+  max-height: auto;
   margin: 10px;
 }
 
@@ -194,4 +215,53 @@ footer {
   color: #fff;
   height: 40px;
   border-radius: 5%;
+}
+
+/* Styles for laptop view */
+@media only screen and (min-width: 1024px) {
+  /* Modify styles for laptop view here */
+  /* For example: increase the font size for laptop view */
+  body {
+    font-size: 18px;
+  }
+  
+  /* Adjust the width of the container for laptop view */
+  .container {
+    
+    max-width: 100%;
+    margin: 20px auto;
+  }
+  
+
+ 
+}
+
+/* Styles for mobile view */
+@media only screen and (max-width: 768px) {
+  /* Modify styles for mobile view here */
+  /* For example: decrease the font size for mobile view */
+  body {
+    font-size: 15px;
+  }
+  
+  /* Adjust the width of the container for mobile view */
+  .container {
+    max-width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Modify other styles specific to mobile view */
+  /* For example: adjust the sidebar width */
+  aside {
+    width: 40%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+  }
 }
