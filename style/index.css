@@ -1,5 +1,5 @@
 /* CSS styles for the shopping website */
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 /* Reset default margin and padding */
 * {
   margin: 0;
@@ -8,8 +8,13 @@
 
 /* Body styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  font-family: 'Poppins', sans-serif;
+  font-weight:bold;
+  /* font-family: Arial, sans-serif; */
+  /* background-color: #f2f2f2; */
+  background-image: url("./images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Navigation Bar */
@@ -101,6 +106,7 @@ main {
   color: #fff;
   border: none;
   cursor: pointer;
+  border-radius: 5%;
 }
 
 /* Footer styles */
@@ -170,6 +176,10 @@ footer {
 }
 
 .cart-buttons button {
-  padding: 5px 10px;
+  padding: 10px 20px;
   margin-right: 5px;
+  background-color: #333;
+  color: #fff;
+  height: 40px;
+  border-radius: 5%;
 }

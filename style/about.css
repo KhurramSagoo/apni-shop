@@ -1,3 +1,5 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 /* Global Styles */
 * {
   box-sizing: border-box;
@@ -6,10 +8,15 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight:900;
+  /* font-family: Arial, sans-serif; */
+  /* background-color: #f2f2f2; */
+  background-image: url("./images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   line-height: 1.6;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -81,17 +88,13 @@ main {
 
 /* Footer Styles */
 footer {
-  background-color: #f4f4f4;
-  padding: 20px;
+  background-color: #333;
+  padding: 10px;
   text-align: center;
+  color: #fff;
 }
 
 .social-icons a {
+  color: #fff;
   margin-right: 10px;
-  color: #333;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  color: #000;
 }

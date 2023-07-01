@@ -1,12 +1,17 @@
 /* styles.css */
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 /* Global styles */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight:bold;
+  /* font-family: Arial, sans-serif; */
+  /* background-color: #f2f2f2; */
+  background-image: url("./images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
 .container {
   display: flex;
 }
@@ -72,15 +77,14 @@ main {
 /* Footer */
 footer {
   background-color: #333;
-  color: #fff;
   padding: 10px;
   text-align: center;
+  color: #fff;
 }
 
 .social-icons a {
   color: #fff;
-  text-decoration: none;
-  margin: 0 5px;
+  margin-right: 10px;
 }
 
 /* about.css */

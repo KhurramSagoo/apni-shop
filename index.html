@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shopping Website</title>
+    <title>Apni Shop</title>
     <link rel="stylesheet" href="./style/index.css" />
+    
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -19,12 +20,12 @@
     <!-- Header with Product Images -->
     <header>
       <div class="product-images">
-        <img src="./images/macbook.jfif"  />
+        <img src="./images/macbook.jfif" />
         <img src="./images/mac.jfif" />
-        <img src="./images/sam1.jfif"  />
-        <img src="./images/sam2.jfif"  />
-        <img src="./images/iphone1.jfif"  />
-        <img src="./images/iphone2.jfif"  />
+        <img src="./images/sam1.jfif" />
+        <img src="./images/sam2.jfif" />
+        <img src="./images/iphone1.jfif" />
+        <img src="./images/iphone2.jfif" />
       </div>
     </header>
 
@@ -38,62 +39,87 @@
           <li><a href="#">Laptop</a></li>
           <li><a href="#">Fragrance</a></li>
         </ul>
+        <!-- Checkout Popup -->
+        <div id="checkout-popup" class="checkout-popup">
+          <div class="checkout-content">
+            <h2>Checkout</h2>
+            <form id="payment-form">
+              <div class="form-group">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" required />
+              </div>
+              <div class="form-group">
+                <label for="card-holder">Card Holder:</label>
+                <input type="text" id="card-holder" required />
+              </div>
+              <div class="form-group">
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" required />
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" required />
+              </div>
+              <button type="submit">Pay Now</button>
+            </form>
+            <button class="close-button" onclick="closeCheckout()">
+              Close
+            </button>
+          </div>
+        </div>
       </aside>
 
       <!-- Main Content Area -->
       <main>
         <div class="main-content">
           <h1>Welcome! To Apni Shop</h1>
-          <p>Welcome to our online shopping website, where you'll discover a world of incredible products at your fingertips. We strive to provide a seamless and enjoyable shopping experience for all our customers, offering a vast selection of high-quality items across various categories.
-            
-            
-            At our shopping website, we prioritize customer satisfaction and convenience. With user-friendly navigation and intuitive search functionality, finding your desired products is a breeze. Our detailed product descriptions, accompanied by high-resolution images, provide a comprehensive overview to help you make informed purchase decisions.
-            
-            To further enhance your shopping experience, we offer a secure and seamless checkout process. Our payment options are safe and flexible, ensuring hassle-free transactions. We also provide reliable shipping services, delivering your purchases to your doorstep in a timely manner.
-            
-            Join our growing community of satisfied customers who enjoy the convenience of online shopping without compromising on quality. Stay updated with the latest trends and exclusive offers by subscribing to our newsletter.
-            
-            Experience the joy of shopping with us and embark on a journey of discovering remarkable products that cater to your lifestyle and preferences. Start exploring our website today and unlock a world of possibilities. Happy shopping!
-            
-            
-            
-            
-            </p>
+          <p>
+            Welcome to our online shopping website, where you'll discover a
+            world of incredible products at your fingertips. We strive to
+            provide a seamless and enjoyable shopping experience for all our
+            customers, offering a vast selection of high-quality items across
+            various categories.
+          </p>
+
+          <p>
+            At our shopping website, we prioritize customer satisfaction and
+            convenience. With user-friendly navigation and intuitive search
+            functionality, finding your desired products is a breeze. Our
+            detailed product descriptions, accompanied by high-resolution
+            images, provide a comprehensive overview to help you make informed
+            purchase decisions.
+          </p>
+
+          <p>
+            To further enhance your shopping experience, we offer a secure and
+            seamless checkout process. Our payment options are safe and
+            flexible, ensuring hassle-free transactions. We also provide
+            reliable shipping services, delivering your purchases to your
+            doorstep in a timely manner.
+          </p>
+
+          <p>
+            Join our growing community of satisfied customers who enjoy the
+            convenience of online shopping without compromising on quality. Stay
+            updated with the latest trends and exclusive offers by subscribing
+            to our newsletter.
+          </p>
+
+          <p>
+            Experience the joy of shopping with us and embark on a journey of
+            discovering remarkable products that cater to your lifestyle and
+            preferences. Start exploring our website today and unlock a world of
+            possibilities. Happy shopping!
+          </p>
         </div>
         <div class="product-details">
-          <h1>Iphone 14 </h1>
-          <img class="main-image" src="./images//smartphone.jfif" alt="">
-          <p>Here </p>
+          <h1>Iphone 14</h1>
+          <img class="main-image" src="./images//smartphone.jfif" alt="" />
+          <p>Here</p>
           <p>Price: $19.99</p>
           <button id="add-to-cart">Add to Cart</button>
         </div>
       </main>
-      <!-- Checkout Popup -->
-    <div id="checkout-popup" class="checkout-popup">
-      <div class="checkout-content">
-        <h2>Checkout</h2>
-        <form id="payment-form">
-          <div class="form-group">
-            <label for="card-number">Card Number:</label>
-            <input type="text" id="card-number" required />
-          </div>
-          <div class="form-group">
-            <label for="card-holder">Card Holder:</label>
-            <input type="text" id="card-holder" required />
-          </div>
-          <div class="form-group">
-            <label for="expiry-date">Expiry Date:</label>
-            <input type="text" id="expiry-date" required />
-          </div>
-          <div class="form-group">
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" required />
-          </div>
-          <button type="submit">Pay Now</button>
-        </form>
-        <button class="close-button" onclick="closeCheckout()">Close</button>
-      </div>
-    </div>
     </div>
 
     <!-- Footer -->
@@ -113,12 +139,10 @@
         Total: $<span id="cart-total-value">0.00</span>
       </div>
       <div class="cart-buttons">
-        <button onclick="clearCart()">Clear Cart</button>
-        <button onclick="openCheckout()">Checkout</button>
+        <button id="add-to-cart" onclick="clearCart()">Close Cart</button>
+        <button id="add-to-cart" onclick="openCheckout()">Checkout</button>
       </div>
     </div>
-
-    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script>
