@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Website</title>
+    <link rel="stylesheet" href="../style/products.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="../pages/About.html">About</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+      <div class="product-list">
+        <!-- Products will be dynamically inserted here -->
+      </div>
+      <div class="cart-container">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">
+          Total: $<span id="cart-total-value">0.00</span>
+        </div>
+        <div class="cart-buttons">
+          <button onclick="clearCart()">Clear Cart</button>
+          <button onclick="checkout()">Checkout</button>
+        </div>
+      </div>
+      <div class="category">
+        <h2>Categories</h2>
+        <ul>
+          <li>
+            <a href="#" onclick="showCategory('smartphones')">Smartphones</a>
+          </li>
+          <li><a href="#" onclick="showCategory('laptops')">Laptops</a></li>
+          <li>
+            <a href="#" onclick="showCategory('fragrances')">Fragrances</a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="product-list"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </footer>
+
+    <!-- <div class="cart-container">
+    <h2>Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <div class="cart-total">Total: $<span id="cart-total-value">0.00</span></div>
+    <div class="cart-buttons">
+      <button onclick="clearCart()">Clear Cart</button>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+      function showCategory(category) {
+        const productListElement = document.getElementById("product-list");
+        // Clear the existing products from the list
+        productListElement.innerHTML = "";
+
+        // Filter and display products based on the selected category
+        const products = getAllProducts(); // Replace this with your code to fetch the product data
+        const filteredProducts = products.filter(
+          (product) => product.category === category
+        );
+
+        filteredProducts.forEach((product) => {
+          // Create and append product elements to the list
+          const productElement = document.createElement("div");
+          // Customize the product element based on your existing code
+          // ...
+
+          productListElement.appendChild(productElement);
+        });
+      }
+
+      function getAllProducts() {
+        // Replace this function with your code to fetch the product data from your backend or any other data source
+        // Return an array of products with their respective category information
+        return [
+          {
+            name: "Product 1",
+            category: "smartphones" /* other product data */,
+          },
+          { name: "Product 2", category: "laptops" /* other product data */ },
+          {
+            name: "Product 3",
+            category: "fragrances" /* other product data */,
+          },
+          // ...
+        ];
+      }
+
+      // JavaScript code for the shopping cart functionality
+      const cartItemsElement = document.getElementById("cart-items");
+      const cartTotalElement = document.getElementById("cart-total-value");
+
+      let cartItems = [];
+
+      function renderCartItems() {
+        cartItemsElement.innerHTML = "";
+
+        cartItems.forEach((item) => {
+          const cartItemElement = document.createElement("div");
+          cartItemElement.className = "cart-item";
+
+          const productImage = document.createElement("img");
+          productImage.src = item.image;
+          productImage.alt = item.name;
+
+          const productName = document.createElement("div");
+          productName.className = "product-name";
+          productName.textContent = item.name;
+
+          const quantity = document.createElement("input");
+          quantity.type = "number";
+          quantity.min = 1;
+          quantity.value = item.quantity;
+          quantity.className = "quantity";
+          quantity.addEventListener("change", () =>
+            updateQuantity(item.id, quantity.value)
+          );
+
+          const price = document.createElement("div");
+          price.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+
+          const removeButton = document.createElement("button");
+          removeButton.textContent = "Remove";
+          removeButton.addEventListener("click", () => removeItem(item.id));
+
+          cartItemElement.appendChild(productImage);
+          cartItemElement.appendChild(productName);
+          cartItemElement.appendChild(quantity);
+          cartItemElement.appendChild(price);
+          cartItemElement.appendChild(removeButton);
+
+          cartItemsElement.appendChild(cartItemElement);
+        });
+
+        const total = calculateTotal();
+        cartTotalElement.textContent = total.toFixed(2);
+      }
+
+      function addItem(id, name, price, image) {
+        const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+        if (itemIndex > -1) {
+          cartItems[itemIndex].quantity++;
+        } else {
+          const newItem = {
+            id,
+            name,
+            price,
+            image,
+            quantity: 1,
+          };
+          cartItems.push(newItem);
+        }
+
+        renderCartItems();
+      }
+
+      function updateQuantity(id, newQuantity) {
+        const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+        if (itemIndex > -1) {
+          const quantity = parseInt(newQuantity);
+          if (quantity > 0) {
+            cartItems[itemIndex].quantity = quantity;
+          } else {
+            removeItem(id);
+          }
+        }
+
+        renderCartItems();
+      }
+
+      function removeItem(id) {
+        cartItems = cartItems.filter((item) => item.id !== id);
+        renderCartItems();
+      }
+
+      function calculateTotal() {
+        let total = 0;
+
+        cartItems.forEach((item) => {
+          total += item.price * item.quantity;
+        });
+
+        return total;
+      }
+
+      function clearCart() {
+        cartItems = [];
+        renderCartItems();
+      }
+
+      function checkout() {
+        alert("Thank you for your purchase!");
+        clearCart();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var productContainer = document.querySelector(".product-list");
+
+        // Fetch the product data from the API
+        fetch("https://dummyjson.com/products")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data); // Log the fetched data to the console
+
+            var products = data.products; // Access the 'products' property within 'data'
+
+            if (Array.isArray(products)) {
+              // Update the link text with the number of products
+              var productsLink = document.querySelector(
+                "nav ul li:nth-child(2) a"
+              );
+              productsLink.innerHTML = `Products (${products.length})`;
+
+              // Create HTML for each product
+              var productsHTML = products
+                .map((product) => {
+                  return `
+              <div class="product-container">
+                <div class="product">
+                  <h3>${product.title}</h3>
+                  <p>${product.description}</p>
+                  <p>Price: $${product.price}</p>
+                  <p>Rating: ${product.rating}</p>
+                  <p>Stock: ${product.stock}</p>
+                  <p>Brand: ${product.brand}</p>
+                  <p>Category: ${product.category}</p>
+                  <img src="${product.thumbnail}" alt="Product Thumbnail">
+                  <!-- Include additional images as needed -->
+                  <!-- Example: <img src="${product.images[0]}" alt="Product Image 1"> -->
+                  <button onclick="addItem('${product.id}', '${product.title}', ${product.price}, '${product.thumbnail}')">Add to Cart</button>
+                </div>
+                </div>
+              `;
+                })
+                .join("");
+
+              // Insert the products HTML into the container
+              productContainer.innerHTML = productsHTML;
+            } else {
+              console.log("Error: Invalid product data");
+            }
+          })
+          .catch((error) => {
+            console.log("Error fetching product data:", error);
+          });
+      });
+    </script>
+  </body>
+</html>

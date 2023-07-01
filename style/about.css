@@ -1,0 +1,97 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #333;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+/* Main Container Styles */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+aside {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+aside h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+aside ul {
+  list-style-type: none;
+}
+
+aside li {
+  margin-bottom: 10px;
+}
+
+/* Main Content Styles */
+main {
+  padding: 20px;
+}
+
+.product-details h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.product-details p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #000;
+}

@@ -1,0 +1,175 @@
+/* CSS styles for the shopping website */
+
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #333;
+}
+.main-image{
+  width: 150px;
+  height: 150px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+/* Header styles */
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.product-images img {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+/* Main Container styles */
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #fff;
+}
+
+/* Sidebar styles */
+aside {
+  width: 20%;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+aside h2 {
+  margin-bottom: 10px;
+}
+
+aside ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+aside ul li {
+  margin-bottom: 10px;
+}
+
+/* Main Content Area styles */
+main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.product-details {
+  text-align: center;
+}
+
+.product-details h1 {
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  margin-bottom: 10px;
+}
+
+.product-details button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.social-icons a {
+  color: #fff;
+  margin-right: 10px;
+}
+
+/* Cart styles */
+.cart-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f2f2f2;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.cart-container.open {
+  transform: translateX(0%);
+}
+
+.cart-container h2 {
+  margin-bottom: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-item img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.cart-item .product-name {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.cart-item .quantity {
+  width: 50px;
+  text-align: center;
+}
+
+.cart-total {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.cart-buttons {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.cart-buttons button {
+  padding: 5px 10px;
+  margin-right: 5px;
+}

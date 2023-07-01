@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Website</title>
+    <link rel="stylesheet" href="../style/styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="./Products.html">Products</a></li>
+        <li><a href="./About.html">About</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header with Product Images -->
+    <header>
+      <div class="product-images">
+        <img src="../images/macbook.jfif" alt="Product 1" />
+        <img src="../images/mac.jfif" alt="Product 1" />
+        <img src="../images/sam1.jfif" alt="Product 1" />
+        <img src="../images/sam2.jfif" alt="Product 1" />
+        <img src="../images/iphone1.jfif" alt="Product 1" />
+        <img src="../images/iphone2.jfif" alt="Product 1" />
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Sidebar -->
+      <aside>
+        <h2>Categories</h2>
+        <ul>
+          <li><a href="#">Smartphones</a></li>
+          <li><a href="#">Laptop</a></li>
+          <li><a href="#">Fragrance</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main>
+        <div class="main-content">
+          <h1>Welcome! To Apni Shop</h1>
+          <p>Welcome to our online shopping website, where you'll discover a world of incredible products at your fingertips. We strive to provide a seamless and enjoyable shopping experience for all our customers, offering a vast selection of high-quality items across various categories.
+            
+            
+            At our shopping website, we prioritize customer satisfaction and convenience. With user-friendly navigation and intuitive search functionality, finding your desired products is a breeze. Our detailed product descriptions, accompanied by high-resolution images, provide a comprehensive overview to help you make informed purchase decisions.
+            
+            To further enhance your shopping experience, we offer a secure and seamless checkout process. Our payment options are safe and flexible, ensuring hassle-free transactions. We also provide reliable shipping services, delivering your purchases to your doorstep in a timely manner.
+            
+            Join our growing community of satisfied customers who enjoy the convenience of online shopping without compromising on quality. Stay updated with the latest trends and exclusive offers by subscribing to our newsletter.
+            
+            Experience the joy of shopping with us and embark on a journey of discovering remarkable products that cater to your lifestyle and preferences. Start exploring our website today and unlock a world of possibilities. Happy shopping!
+            
+            
+            
+            
+            </p>
+        </div>
+        <div class="product-details">
+          <h1>Iphone 14 </h1>
+          <img class="main-image" src="../images//smartphone.jfif" alt="">
+          <p>Here </p>
+          <p>Price: $19.99</p>
+          <button id="add-to-cart">Add to Cart</button>
+        </div>
+      </main>
+      <!-- Checkout Popup -->
+    <div id="checkout-popup" class="checkout-popup">
+      <div class="checkout-content">
+        <h2>Checkout</h2>
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" required />
+          </div>
+          <div class="form-group">
+            <label for="card-holder">Card Holder:</label>
+            <input type="text" id="card-holder" required />
+          </div>
+          <div class="form-group">
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" required />
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" required />
+          </div>
+          <button type="submit">Pay Now</button>
+        </form>
+        <button class="close-button" onclick="closeCheckout()">Close</button>
+      </div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </footer>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+      <h2>Shopping Cart</h2>
+      <div id="cart-items"></div>
+      <div class="cart-total">
+        Total: $<span id="cart-total-value">0.00</span>
+      </div>
+      <div class="cart-buttons">
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="openCheckout()">Checkout</button>
+      </div>
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+      // JavaScript code for the shopping cart functionality
+      const cartItemsElement = document.getElementById("cart-items");
+      const cartTotalElement = document.getElementById("cart-total-value");
+      const addToCartButton = document.getElementById("add-to-cart");
+      const cartContainer = document.querySelector(".cart-container");
+      const checkoutPopup = document.getElementById("checkout-popup");
+      const paymentForm = document.getElementById("payment-form");
+
+      let cartItems = [];
+
+      addToCartButton.addEventListener("click", () => {
+        addItem("product1", "Product Name", 19.99, "image1.jpg");
+        updateSharedCartData();
+      });
+
+      // Function to render the cart items on the page
+      function renderCartItems() {
+        cartItemsElement.innerHTML = "";
+
+        cartItems.forEach((item) => {
+          const cartItemElement = document.createElement("div");
+          cartItemElement.className = "cart-item";
+
+          const productImage = document.createElement("img");
+          productImage.src = item.image;
+          productImage.alt = item.name;
+
+          const productName = document.createElement("div");
+          productName.className = "product-name";
+          productName.textContent = item.name;
+
+          const quantity = document.createElement("input");
+          quantity.type = "number";
+          quantity.min = 1;
+          quantity.value = item.quantity;
+          quantity.className = "quantity";
+          quantity.addEventListener("change", () =>
+            updateQuantity(item.id, quantity.value)
+          );
+
+          const price = document.createElement("div");
+          price.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+
+          const removeButton = document.createElement("button");
+          removeButton.textContent = "Remove";
+          removeButton.addEventListener("click", () => removeItem(item.id));
+
+          cartItemElement.appendChild(productImage);
+          cartItemElement.appendChild(productName);
+          cartItemElement.appendChild(quantity);
+          cartItemElement.appendChild(price);
+          cartItemElement.appendChild(removeButton);
+
+          cartItemsElement.appendChild(cartItemElement);
+        });
+
+        const total = calculateTotal();
+        cartTotalElement.textContent = total.toFixed(2);
+      }
+
+      // Function to add an item to the cart
+      function addItem(id, name, price, image) {
+        const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+        if (itemIndex > -1) {
+          // Item already exists in the cart, update the quantity
+          cartItems[itemIndex].quantity++;
+        } else {
+          // Item does not exist in the cart
+          const newItem = {
+            id,
+            name,
+            price,
+            image,
+            quantity: 1,
+          };
+          cartItems.push(newItem);
+        }
+
+        renderCartItems();
+        cartContainer.classList.add("open");
+      }
+
+      // Function to update the quantity of an item in the cart
+      function updateQuantity(id, newQuantity) {
+        const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+        if (itemIndex > -1) {
+          const quantity = parseInt(newQuantity);
+          if (quantity > 0) {
+            cartItems[itemIndex].quantity = quantity;
+          } else {
+            removeItem(id);
+          }
+        }
+
+        renderCartItems();
+      }
+
+      // Function to remove an item from the cart
+      function removeItem(id) {
+        cartItems = cartItems.filter((item) => item.id !== id);
+        renderCartItems();
+      }
+
+      // Function to calculate the total price of the cart
+      function calculateTotal() {
+        let total = 0;
+
+        cartItems.forEach((item) => {
+          total += item.price * item.quantity;
+        });
+
+        return total;
+      }
+
+      // Function to clear the cart
+      function clearCart() {
+        cartItems = [];
+        renderCartItems();
+        cartContainer.classList.remove("open");
+        updateSharedCartData();
+      }
+
+      // Function to open the checkout popup
+      function openCheckout() {
+        if (cartItems.length > 0) {
+          checkoutPopup.style.display = "block";
+        } else {
+          alert(
+            "Your cart is empty. Please add items to your cart before checking out."
+          );
+        }
+      }
+
+      // Function to close the checkout popup
+      function closeCheckout() {
+        checkoutPopup.style.display = "none";
+      }
+
+      // Function to handle the form submission
+      paymentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Payment Successful! Thank you for your purchase!");
+        clearCart();
+        closeCheckout();
+      });
+
+      // Function to update the shared cart data in localStorage
+      function updateSharedCartData() {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      }
+
+      // Load cart data from localStorage on page load
+      window.addEventListener("load", () => {
+        const storedCartItems = localStorage.getItem("cartItems");
+        if (storedCartItems) {
+          cartItems = JSON.parse(storedCartItems);
+          renderCartItems();
+          cartContainer.classList.add("open");
+        }
+      });
+    </script>
+  </body>
+</html>
