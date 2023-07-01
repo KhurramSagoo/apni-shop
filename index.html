@@ -46,23 +46,23 @@
             <form id="payment-form">
               <div class="form-group">
                 <label for="card-number">Card Number:</label>
-                <input type="text" id="card-number" required />
+                <input class="payment-input" placeholder="Enter your card number" type="text" id="card-number" required />
               </div>
               <div class="form-group">
                 <label for="card-holder">Card Holder:</label>
-                <input type="text" id="card-holder" required />
+                <input placeholder="Enter card holder name" type="text" id="card-holder" required />
               </div>
               <div class="form-group">
                 <label for="expiry-date">Expiry Date:</label>
-                <input type="text" id="expiry-date" required />
+                <input type="date" style="width:170px;" id="expiry-date" required />
               </div>
               <div class="form-group">
                 <label for="cvv">CVV:</label>
                 <input type="text" id="cvv" required />
               </div>
-              <button type="submit">Pay Now</button>
+              <button class="payment-btn" type="submit">Pay Now</button>
             </form>
-            <button class="close-button" onclick="closeCheckout()">
+            <button class="payment-btn" onclick="closeCheckout()">
               Close
             </button>
           </div>
