@@ -8,9 +8,9 @@ body {
   font-weight:bold;
   /* font-family: Arial, sans-serif; */
   /* background-color: #f2f2f2; */
-  background-image: url("./images/background.png");
+  /* background-image: url("./images/background.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 .container {
   display: flex;
@@ -26,6 +26,10 @@ nav ul {
   display: flex;
   justify-content: space-around;
   padding: 10px;
+  
+}
+ul {
+  margin-block-start: auto;
 }
 
 nav ul li {
