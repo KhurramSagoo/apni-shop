@@ -7,19 +7,37 @@
 }
 
 .slider-container {
+  margin: 0 auto; /* Set left and right margins to auto */
+  padding: 0;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1024px; /* Set maximum width to match the header width */
+  height: 300px; /* Adjust the height as needed */
+}
+
+
+/* .slider-container {
   margin: 0;
   padding: 0;
   border: none;
   align-items: center;
   justify-content: center;
   position: relative;
-  left: 1.25em;
+  left: 2.25em;
   overflow: hidden;
   width:95%;
   height: 300px;
    /* Adjust the height as needed */
-}
+} */
 
+#mw{
+  width: 100%;
+  max-width: 1024px;
+}
 .slide {
   /* padding-left: 180px; */
   position: absolute;
@@ -249,7 +267,7 @@ footer {
   
   /* Adjust the width of the container for mobile view */
   .container {
-    max-width: 90%;
+    max-width: 95%;
     margin: 20px auto;
     display: flex;
     flex-direction: column-reverse;
@@ -260,11 +278,21 @@ footer {
   /* Modify other styles specific to mobile view */
   /* For example: adjust the sidebar width */
   aside {
-    width: 40%;
-    padding: 10px;
+    width: 95%;
+    padding: 0px;
     display: flex;
     flex-direction: column;
     align-items:flex-start;
     justify-content: center;
   }
+  #payment-form{
+    width: 95%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    
+  }
+
 }
