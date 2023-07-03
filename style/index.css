@@ -83,6 +83,11 @@ nav ul li a {
   text-decoration: none;
   padding: 5px 10px;
 }
+.anchr{
+text-decoration: none;
+font-weight: bold;
+padding: 10px;
+}
 /* Header styles */
 header {
   text-align: center;
@@ -109,6 +114,7 @@ aside {
   width: 20%;
   padding: 20px;
   background-color: #f2f2f2;
+  padding: 10px;
 }
 
 aside h2 {
